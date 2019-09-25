@@ -1,0 +1,17 @@
+    def Convert(root):
+        if root==None:
+            return
+        mid = []
+        dfs(root)
+        for i in range(len(mid)-1):
+            mid[i].right = mid[i+1]
+            mid[i+1].left = mid[i]
+
+        return mid[0]
+
+    def dfs(root):
+        if not root:
+            return
+        dfs(root.left)
+        mid.append(root)
+        dfs(root.right)
