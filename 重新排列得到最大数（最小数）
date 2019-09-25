@@ -1,0 +1,11 @@
+        def mycmp(x,y):
+            if x+y>y+x:
+                return 1
+            elif x==y:
+                return 0
+            else:
+                return -1
+        import functools
+        nums=list(map(str,nums))
+        nums.sort(key=functools.cmp_to_key(mycmp),reverse=True)# 如果是最小数就不用reverse
+        return str(int(''.join(nums)))
