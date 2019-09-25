@@ -15,3 +15,24 @@
         dfs(root.left)
         mid.append(root)
         dfs(root.right)
+
+
+# 上面的更好理解，下面的更精简
+
+head=None
+p=None
+
+def dfs(root):
+    if root==None:
+        return 
+    dfs(root.left)
+    if head==None:
+        head=root
+        p=root
+    else:
+        p.right=root # p是上一个
+        root.left=p
+        p=root
+    dfs(root.right)
+dfs(root)
+return head
