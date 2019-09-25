@@ -1,0 +1,53 @@
+如何得到一个数据流中的中位数？如果从数据流中读出奇数个数值，那么中位数就是所有数值排序之后位于中间的数值。如果从数据流中读出偶数个数值，那么中位数就是所有数值排序之后中间两个数的平均值。
+
+思路：
+
+/***
+     对于一个升序排序的数组，中位数为左半部分的最大值，右半部分的最小值，而左右两部分可以是无需的，只要保证左半部分的数均小于
+    右半部分即可。因此，左右两半部分分别可用最大堆、最小堆实现。
+    首先定义：如果有奇数个数，则中位数放在左半部分；如果有偶数个数，则取左半部分的最大值、右边部分的最小值之平均值
+    分两种情况讨论：
+    当目前有偶数个数字时，数字先插入最小堆，然后选择最小堆的最小值插入最大堆（第一个数字插入左半部分的最小堆）
+    当目前有奇数个数字时，数字先插入最大堆，然后选择最大堆的最大值插入最小堆
+    
+    其实就是先插入对面，为了有序
+    
+    注意最大堆最小堆都是针对array[0]来说的 min[0]是最小值，则min是递增排序；max[0]是最大值，故递减排序
+    ***/
+
+class Solution {
+public:
+    //说明：第一个数据插入左边的最大堆
+    //目前有偶数个数时，num先插入最小堆，然后选择最小堆的最小值插入最大堆
+    //目前有奇数个数时，num先插入最大堆，然后选择最大堆的最大值插入最小堆
+    void Insert(int num)
+    {
+        if(count % 2 == 0){
+            min.push_back(num);
+            push_heap(min.begin(), min.end(), greater<int>());
+            max.push_back(min[0]);
+            push_heap(max.begin(), max.end(), less<int>());
+            pop_heap(min.begin(), min.end(), greater<int>());
+            min.pop_back();
+        }else{
+            max.push_back(num);
+            push_heap(max.begin(), max.end(), less<int>());
+            min.push_back(max[0]);
+            push_heap(min.begin(), min.end(), greater<int>());
+            pop_heap(max.begin(), max.end(), less<int>());
+            max.pop_back();
+        }
+        count ++;
+    }
+
+    double GetMedian()
+    {
+        if(count % 2 == 1) return (double)max[0];
+        return (double)(max[0] + min[0]) / 2;
+    
+    }
+private:
+    int count = 0;
+    vector<int> min;
+    vector<int> max;
+};
