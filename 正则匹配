@@ -1,0 +1,12 @@
+def dfs(s,pattern):
+  if s==pattern:
+    return True
+  if len(pattern)>1 and pattern[1]=='*':# c*类型
+    if s and (s[0]==pattern[0] or pattern[0]=='.'):匹配成功
+      return dfs(s,pattern[2:] or dfs(s[1:],pattern)# 略过c*或者继续匹配c*
+    else:
+      return dfs(s,pattern[2:]# 略过c*(匹配不成功）
+  elif s and pattern and (s[0] == pattern[0] or pattern[0]=='.'):# s，pattern都有而且匹配成功
+    return dfs(s[1:],pattern[1:])
+  else:
+    return False
