@@ -1,0 +1,7 @@
+        import collections
+        dic=collections.defaultdict(int)
+        for n in numbers:
+            dic[n]+=1
+            if dic[n]>len(numbers)//2:
+                return n
+        return 0
