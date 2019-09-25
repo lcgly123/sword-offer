@@ -1,0 +1,32 @@
+题目描述： 
+ 输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
+
+思路： 
+ 本题可以分为两步，第一步：找到A中与B的根结点值相等的结点R，第二步：判断以R为根结点的子树是否包含B一样的结构。本题思路不难，但是需要格外注意对指针空值的判断。
+
+
+    def HasSubtree( root1, root2):
+        res = False
+        if root1 and root2:
+            if root1.val == root2.val:# 其实不用，因为isequal内部有
+                res = iseuqual(root1, root2)
+            # 判断左子树中是否包含B树结构
+            if not res:
+                res = HasSubtree(root1.left, root2)
+            # 判断右子树中是否包含B树结构
+            if not res:
+                res = HasSubtree(root1.right, root2)
+
+        return res
+
+    def iseuqual( root1, root2):# 是不是有相同的部分
+        # 如果B树为空，那么可以算B是A的子结构,中间的结构也行，（不是真正的判断相等）
+        if root2==None:
+            return True
+        # 如果A树空，而B树不空，那么B不是A的子结构
+        if not root1:
+            return False
+        if root1.val != root2.val:
+            return False
+        # 根节点值相同，在判断左右子树是否都相同
+        return iseuqual(root1.left, root2.left) and iseuqual(root1.right, root2.right)
