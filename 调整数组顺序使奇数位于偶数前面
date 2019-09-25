@@ -1,0 +1,15 @@
+   输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于位于数组的后半部分 
+    
+    
+    def reOrderArray(self, array):
+        n = len(array)
+        head = 0
+        tail = n - 1
+        while head < tail:
+            while array[head]%2 != 0:
+                head += 1
+            while array[tail]%2 == 0:
+                tail -= 1
+            array[head], array[tail] = array[tail], array[head]
+            head += 1
+            tail -= 1
