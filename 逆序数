@@ -1,0 +1,27 @@
+数列的逆序数
+
+def merge(left,right):
+    global cnt
+    res=[]
+    while(left and right):
+        if right[0]<left[0]:# 这里不能有=
+            res.append(right.pop(0))
+            cnt+=len(left)# 就这一句统计逆序数
+        else:
+            res.append(left.pop(0))
+    res+=left# 这里没有逆序对了（不成对了）
+    res+=right
+    return res
+
+
+def sort(input):
+    if len(input)<=1:
+        return input
+
+    mid=len(input)//2
+    left=sort(input[:mid])
+    right=sort(input[mid:])
+
+    return merge(left,right)
+global cnt
+cnt=0
