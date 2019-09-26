@@ -1,0 +1,24 @@
+扑克牌的顺子问题：判断是不是顺子
+
+def get(A):
+  if len(A)<1:
+    return False
+  dic={}
+  for n in A:
+    if n==0:
+      continue
+    elif n in dic:
+      return False
+    else:
+      dic[n]=1
+  return True if max(dic.keys())-min(dic.keys())<=4 else False # 本题是看5张牌是不是顺子
+  
+  
+
+
+
+
+
+
+
+
