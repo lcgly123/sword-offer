@@ -1,0 +1,7 @@
+求1+2+3+…+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句
+简单来说就是利用逻辑与的短路特性实现递归终止。
+
+def dfs(n):
+  temp=n>0 and dfs(n-1)
+  return temp+n
+  
