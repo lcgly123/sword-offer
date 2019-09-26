@@ -1,3 +1,5 @@
+
+
 看到有序数组就应该想到二分法
 
 def fun1(A,target):
@@ -22,3 +24,4 @@ def fun2(A,target):
   
   
   return fun2(A,target)-fun1(...)
+# 其实可以直接用bisect.sect_left(意义和上面的函数不一样）
