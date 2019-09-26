@@ -1,0 +1,39 @@
+1-n整数中x出现的次数
+
+
+
+将n的各个位分为两类：个位与其它位。 
+对个位来说：
+
+若个位大于0，1出现的次数为round*1+1
+若个位等于0，1出现的次数为round*1
+对其它位来说，记每一位的权值为base，位值为weight，该位之前的数是former，举例如图： 
+
+
+则：
+若weight为0，则1出现次数为round*base
+若weight为1，则1出现次数为round*base+former+1
+若weight大于1，则1出现次数为rount*base+base
+
+
+
+
+def get(n,x):
+  res=0
+  round=n#也有n位
+  base=1 # 这一位的权重
+  
+  while(round>0):
+    weight=n%base
+    round//=10
+    
+    res+=round*base
+    if weight==x:
+      res+=(n%base)+1
+    elif weight>x:
+      res+=base
+    base*=10
+  
+  return res
+  
+  
