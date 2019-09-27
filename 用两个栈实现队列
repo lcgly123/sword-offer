@@ -1,0 +1,21 @@
+stack1=[]
+stack2=[]
+
+
+def push(n):
+  stack2.append(n)
+def pop():
+  if stack1:
+    return stack1.pop()
+  else:
+    while(stack2):
+      stack1.append(stack2.pop())
+    return stack1.pop()
+    
+
+
+
+
+
+
+
