@@ -1,0 +1,26 @@
+对于该树的任意子树，其最大距离的求解分为以下三种情况：
+
+该树的最大距离是左子树的最大距离。
+该树的最大距离是右子树的最大距离。
+该树的最大距离是从左子树的最深的那个结点经过该树的头结点走到右子树的最深的那个结点。
+
+
+class Solution(object):
+    def diameterOfBinaryTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+            return 0
+        max_dia_left = self.diameterOfBinaryTree(root.left)
+        max_dia_right = self.diameterOfBinaryTree(root.right)
+        max_dia = max(self.get_depth(root.left)+self.get_depth(root.right),max_dia_left,max_dia_right)  # max: 1.当前结点最大距离；2.左、右子结点的最大距离
+        return max_dia
+        
+    def get_depth(self,root):  #计算以当前结点为根时，树的最大深度；
+        if not root:
+            return 0
+        else:
+            return max(1+self.get_depth(root.left),1+self.get_depth(root.right))
+
