@@ -1,0 +1,14 @@
+找出数组中每个数右边第一个比它大的元素,没有就是
+
+单调栈
+
+def get(A):
+  stack=[]
+  res=[-1]*len(A)
+  
+  for i in range(len(A)):
+    while(stack and A[i]>A[stack[-1]):
+      inx=stack.pop()
+      res[inx]=A[i]
+    stack.append(i)
+  return res
