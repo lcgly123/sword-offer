@@ -1,0 +1,12 @@
+def get(node):
+  if node==None or node.next==None:
+    return node
+  newhead=get(node.next)# 完成自node,next的反转
+  node.next.next=node# node.next.next在newhead的最后一个
+  node.next=None
+  return newhead
+  
+  
+  
+  
+  
