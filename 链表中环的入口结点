@@ -1,0 +1,18 @@
+
+def get(head):
+  slow,fast=head,head
+  while(fast and fast.next):
+    slow=slow.next
+    fast=fast.next.next
+    if slow==fast:
+      break
+  if fast==None or fast.next==None:
+    return None
+  # 上面找有没有环
+  fast=head
+  while(fast!=slow):
+    fast=fast.next# 因为fast刚好快一倍
+    slow=slow.next
+  return fast
+  
+    
