@@ -1,0 +1,37 @@
+包含min函数的栈
+维持一个单调栈
+
+stack=[]
+minstack=[]
+def push(n):
+  if minstack==[] or minstack[-1]<=n:# 有=
+    minstack.append(n)
+  stack.append(n)
+def pop():
+  if stack:
+    if stack[-1]==minstack[-1]:
+      minstack.pop()
+    stack.pop()
+def min():
+  
+  return minstack[-1] if stack else None
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
