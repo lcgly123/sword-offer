@@ -1,0 +1,20 @@
+问题：o（1）空间复杂度下重新排列链表，使其奇数在前，偶数在后
+例题：323
+
+        dummy1=odd=ListNode(0)
+        dummy2=even=ListNode(0)
+        
+        while(head):
+            odd.next=head
+            even.next=head.next
+            
+            odd=odd.next
+            even=even.next
+            
+            if head.next:
+                head=head.next.next
+            else:
+                head=head.next# 也就是None
+        
+        odd.next=dummy2.next
+        return dummy1.next
