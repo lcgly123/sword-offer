@@ -24,7 +24,7 @@ def get(n,x):
   base=1 # 这一位的权重
   
   while(round>0):
-    weight=n%base
+    weight=round%base
     round//=10
     
     res+=round*base
