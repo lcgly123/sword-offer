@@ -1,7 +1,7 @@
 旋转数组的最小数字
 
 def get(A):
-  l,r=0,len(A)
+  l,r=0,len(A)-1
   while(l<=r):
     mid=(l+r)//2
     if A[mid]>A[r]:# 旋转处
