@@ -4,7 +4,7 @@
 stack=[]
 minstack=[]
 def push(n):
-  if minstack==[] or minstack[-1]<=n:# 有=
+  if minstack==[] or minstack[-1]>=n:# 有=
     minstack.append(n)
   stack.append(n)
 def pop():
