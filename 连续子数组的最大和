@@ -1,13 +1,16 @@
 连续子数组的最大和（有负值）
 
-def fun(A):
-  res=0
-  add=0
-  for n in A:
-    add=max(0,add+n) # 一定是从正数部分开始加的
-    res=max(res,add)
-  return res
-  
+例题：剑指：连续子数组的最大和
+连续子列用cur_max=max(array[i],cur_max+array[i])，不连续的dp用dp[i]=max(dp[i-1]+array[i],dp[i-1])
+
+
+本题可以用简单的动态规划完成，用f(i) f(i)记录以a[i]为结尾的子数组的最大和，如果前面i-1的子数组的最大和为负值，那么全部抛弃
+        cur_max=array[0]
+        res=array[0]
+        for i in range(1,len(array)):
+            cur_max=max(array[i],cur_max+array[i])
+            res=max(res,cur_max)
+        return res
   
   
   
