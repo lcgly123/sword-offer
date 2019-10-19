@@ -9,5 +9,7 @@ def dfs(root):
   go=root.val
   ungo=0
   for next_node in gragh[node]:
-    ungo+=dfs(next_node)
-  return max(go,ungo)
+    next_go,next_ungo=dfs(next)
+    go+=next_ungo
+    ungo+=max(next_go,next_ungo)
+  return go,ungo
