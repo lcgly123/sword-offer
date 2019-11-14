@@ -1,0 +1,54 @@
+# 后序
+def bin_tree_post_order_traverse4(root):
+    '''
+    利用一个栈和一个标志节点实现后序遍历
+    '''
+    s=[root]
+    lastNode=None #上一个访问过(打印出来)的节点
+    while s:
+        while s[-1].lchild: # 使用while到达其分支最底层的左节点
+            s.append(s[-1].lchild)
+        while s:
+            # 如果当前节点的右节点为空或者已经访问过时，此时当前节点已经遍历完成，把中间的加进去
+            if s[-1].rchild==lastNode or not s[-1].rchild:
+                node=s.pop()
+                print(node.value)
+                lastNode=node
+            elif s[-1].rchild: #如果当前节点的右节点没有访问过，则当前节点入栈
+                s.append(s[-1].rchild)
+                break #回到第一个while
+                
+# 前序
+    def preorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        res = []
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            if node:
+                res.append(node.val)
+                stack.append(node.right)
+                stack.append(node.left)
+        return res
+
+
+
+def inorderTraversal(self, root):   #先把根节点入栈，如果左子树一直不为空，就一直入栈，直到 
+
+    stack=[]
+    res=[]
+    if not root:
+        return []
+    while root or stack:
+        while root:
+            stack.append(root)
+            root=root.left
+        if stack:#每次出来一个
+            a=stack.pop()
+            root=a.right
+            res.append(a.val)
+    return res
+
