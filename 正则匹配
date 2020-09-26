@@ -1,3 +1,4 @@
+# 正则匹配是递归的思路
 def dfs(s,pattern):
   if s==pattern:
     return True
